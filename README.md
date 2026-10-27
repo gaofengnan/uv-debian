@@ -1,12 +1,12 @@
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/dariogriffo/uv-debian/total)
-![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/dariogriffo/uv-debian/latest/total)
-![GitHub Release](https://img.shields.io/github/v/release/dariogriffo/uv-debian)
-![GitHub Release Date](https://img.shields.io/github/release-date/dariogriffo/uv-debian?display_date=published_at)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/gaofengnan/uv-debian/total)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/gaofengnan/uv-debian/latest/total)
+![GitHub Release](https://img.shields.io/github/v/release/gaofengnan/uv-debian)
+![GitHub Release Date](https://img.shields.io/github/release-date/gaofengnan/uv-debian?display_date=published_at)
 
 <h1>
    <p align="center">
-     <a href="https://uv.org/"><img src="https://github.com/dariogriffo/uv-debian/blob/main/uv-logo.png" alt="uv Logo" width="128" style="margin-right: 20px"></a>
-     <a href="https://www.debian.org/"><img src="https://github.com/dariogriffo/uv-debian/blob/main/debian-logo.png" alt="Debian Logo" width="104" style="margin-left: 20px"></a>
+     <a href="https://uv.org/"><img src="https://github.com/gaofengnan/uv-debian/blob/main/uv-logo.png" alt="uv Logo" width="128" style="margin-right: 20px"></a>
+     <a href="https://www.debian.org/"><img src="https://github.com/gaofengnan/uv-debian/blob/main/debian-logo.png" alt="Debian Logo" width="104" style="margin-left: 20px"></a>
      <br>uv for Debian
    </p>
 </h1>
@@ -16,8 +16,10 @@
 
 # uv for Debian
 
+> Fork of [dariogriffo/uv-debian](https://github.com/dariogriffo/uv-debian) (MIT); the original packaging is by Dario Griffo. Served at [deb.gaofn.xyz](https://deb.gaofn.xyz) for Debian 12 (bookworm) and 13 (trixie).
+
 This repository contains build scripts to produce the _unofficial_ Debian packages
-(.deb) for [uv](https://github.com/astral-sh/uv/) hosted at [deb.griffo.io](https://deb.griffo.io)
+(.deb) for [uv](https://github.com/astral-sh/uv/) hosted at [deb.gaofn.xyz](https://deb.gaofn.xyz)
 
 The package installs both `uv` and [`uvx`](https://docs.astral.sh/uv/guides/tools/),
 the tool runner. They ship together because `uvx` is a small trampoline that runs
@@ -48,19 +50,13 @@ install on Debian. If you're looking for the uv source code, see
 
 ## Install/Update
 
-📖 **Step-by-step install guide:** [Debian](https://deb.griffo.io/install-latest-uv-in-debian.html) · [Ubuntu](https://deb.griffo.io/install-latest-uv-in-ubuntu.html)
-
 ### The Debian way
-
-> ⚠️ **apt access requires a yearly subscription**
-> ([deb.griffo.io](https://deb.griffo.io)). To use this tool for free, download
-> the .deb from the [Releases](https://github.com/dariogriffo/uv-debian/releases) page
-> and install it manually (see below).
 
 ```sh
 sudo install -d -m 0755 /etc/apt/keyrings
-curl -fsSL https://deb.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/keyrings/deb.griffo.io.gpg
-echo "deb [signed-by=/etc/apt/keyrings/deb.griffo.io.gpg] https://deb.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/deb.griffo.io.list
+sudo curl -fsSL https://deb.gaofn.xyz/deb.gaofn.xyz.gpg -o /etc/apt/keyrings/deb.gaofn.xyz.gpg
+sudo curl -fsSL https://deb.gaofn.xyz/deb.gaofn.xyz.sources -o /etc/apt/sources.list.d/deb.gaofn.xyz.sources
+# Debian 12 (bookworm): fetch deb.gaofn.xyz-bookworm.sources instead
 sudo apt update
 sudo apt install -y uv
 ```
@@ -75,7 +71,7 @@ uvx pycowsay 'hello world!'
 ### Manual Installation
 
 1. Download the .deb package for your Debian version available on
-   the [Releases](https://github.com/dariogriffo/uv-debian/releases) page.
+   the [Releases](https://github.com/gaofengnan/uv-debian/releases) page.
 2. Install the downloaded .deb package.
 
 ```sh
